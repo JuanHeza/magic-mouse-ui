@@ -3,7 +3,7 @@
     min-height: var(--card-size);
 }
 .minimalCard{
-    width: calc(var(--card-size) + 10px);
+    width: calc(var(--card-size));
     height: var(--card-size);
     /* border: solid 1px var(--lorcana-bronze);
     border-radius: 8px; */

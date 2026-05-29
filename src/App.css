@@ -4,7 +4,7 @@
   --lorcana-bronze: #cd7f32;
   --accent: var(--lorcana-gold);
   --playmat-bg: #333;
-  --card-size: 80px;
+  --card-size: 75px;
 }
 .counter {
   font-size: 16px;
@@ -40,6 +40,9 @@
   flex-direction: column;
   @media (max-width: 1024px) {
     padding: 24px;
+  }
+  &.nonlocal{
+    flex-direction: column-reverse;
   }
   .lore-tracker{
     position: relative;
@@ -104,43 +107,16 @@
   .action-button{
     color: var(--lorcana-gold);
   }
-  .upper-area{
-    padding: 12px;
-    display: flex;
-    border: 1px solid var(--lorcana-gold);
-    border-radius: 8px;
-    /* margin: 12px 0; */
-    flex: 1;
-    .play-area{
-      border: solid 1px var(--lorcana-gold);
-      width: 100%;
-      height: 100%;
-    }
-  }
-  .under-area{
-    height: var(--card-size);
-    padding: 12px;
-    gap: 12px;
-    display: flex;
-    border: 1px solid var(--lorcana-silver);
-    border-radius: 8px;
-    justify-content: space-between;
-    
-    .discard-area, .deck-area{
-      border: solid 1px var(--lorcana-silver);
-      border-radius: 8px;
-      aspect-ratio: 1 / 1;
-    }
-    .inkwell-area{
-      border: 1px solid var(--lorcana-silver);
-      border-radius: 8px;
-      flex: 1;
-    }
-  }
+
   .area{
     position: relative;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+
     .area-label{
       position: absolute;
+      font-size: 10px;
       left: 50%;
       top: 50%;
       transform-origin: center;
@@ -152,13 +128,74 @@
       padding: 4px 0;
     }
   }
-  .hand-area{
-    border: 1px solid var(--lorcana-bronze);
-    border-radius: 8px;
-    width: 100%;  
-    display: flex;
-    height: var(--card-size);
-    justify-content: center;
-    gap: 10px;
+  .off-area{
+    &.nonlocal{
+      .hand-area{
+        transform-origin: center;
+        rotate: 180deg;
+      }
+    }
+    .hand-area{
+      border: 1px solid var(--lorcana-bronze);
+      border-radius: 8px;
+      /* width: 100%;   */
+      display: flex;
+      height: var(--card-size);
+      justify-content: center;
+      gap: 10px;
+    }
   }
+  .central-area{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: 1px solid var(--lorcana-gold);
+    border-radius: 8px;
+    gap: 8px;
+    height: calc(var(--card-size) * 3 + 24px);
+    .inkwell-area{
+      /* flex: 1; */
+      border: solid 1px var(--lorcana-silver);
+      flex-direction: column;
+      width: var(--card-size);
+    }
+    .play-area{
+      border: solid 1px var(--lorcana-gold);
+      flex: 12;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .column{
+      width: var(--card-size);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+        .discard-area, .deck-area{
+          border: solid 1px var(--lorcana-silver);
+          border-radius: 8px;
+          flex: 1;
+        }
+    }
+    &.nonlocal{
+      flex-direction: row-reverse;
+      .play-area{
+        transform-origin: center;
+        rotate: 180deg;
+      }
+      .inkwell-area{
+        transform-origin: center;
+        rotate: 180deg;
+      }
+      .column{
+        flex-direction: column-reverse;
+        .discard-area, .deck-area{
+          transform-origin: center;
+          rotate: 180deg;
+        }
+      }
+    }
+  }
+
 }

@@ -28,8 +28,8 @@ function LoreTracker({ maxLore, trackerRef, count, local }: LoreTrackerProps) {
         { length: maxLore },
         (_, index) => index + 1
     )
-    console.table(positions)
-console.log({local: local, ...positions[local ? positions.length - count : count-1], count: local ? positions.length - count : count-1})
+//     console.table(positions)
+// console.log({local: local, ...positions[local ? positions.length - count : count-1], count: local ? positions.length - count : count-1})
     let points = numbers.reduce((acc: JSX.Element[], num: number) => {
         acc.push(
         <div className={`lore-item ${count === num ? "active" : ""}`} key={ num } > 
