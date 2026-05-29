@@ -1,0 +1,164 @@
+:root{
+  --lorcana-gold: #d6c081;
+  --lorcana-silver: #c0c0c0;
+  --lorcana-bronze: #cd7f32;
+  --accent: var(--lorcana-gold);
+  --playmat-bg: #333;
+  --card-size: 80px;
+}
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.spacer{
+  height: 12px;
+}
+
+.playmat {
+  height: calc(5 * var(--card-size));
+  background: var(--playmat-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 1024px) {
+    padding: 24px;
+  }
+  .lore-tracker{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    /*gap: 8px;*/
+    /* padding: 8px 0; */
+    height: 40px;
+    justify-content: space-evenly;
+
+    width: -webkit-fill-available;
+    &.non-local{
+      flex-direction: row-reverse;
+      .lore-item, img, .illuminary {
+        transform-origin: center;
+        rotate: 180deg;
+      }
+      
+    }
+    .lore-item{
+      /* background: #ffd7004a; */
+      color: var(--accent);
+      /*flex: 1;*/
+      position: relative;
+      display: flex;
+      aspect-ratio: 1 / 1;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      transition: 0.5s opacity ease-in-out;
+      opacity: 1;
+
+      &.active{
+        opacity: 0;
+      }
+      img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 0;
+        margin: 0;
+      }
+    }
+    .illuminary{
+      position: absolute;
+      height: 100%;
+      left: 0;
+      padding: 0;
+      margin: 0;
+      aspect-ratio: 1 / 1;
+      transition: 0.5s transform ease-in-out;
+    }
+  }
+  .button-set{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px;
+  }
+  .action-button{
+    color: var(--lorcana-gold);
+  }
+  .upper-area{
+    padding: 12px;
+    display: flex;
+    border: 1px solid var(--lorcana-gold);
+    border-radius: 8px;
+    /* margin: 12px 0; */
+    flex: 1;
+    .play-area{
+      border: solid 1px var(--lorcana-gold);
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .under-area{
+    height: var(--card-size);
+    padding: 12px;
+    gap: 12px;
+    display: flex;
+    border: 1px solid var(--lorcana-silver);
+    border-radius: 8px;
+    justify-content: space-between;
+    
+    .discard-area, .deck-area{
+      border: solid 1px var(--lorcana-silver);
+      border-radius: 8px;
+      aspect-ratio: 1 / 1;
+    }
+    .inkwell-area{
+      border: 1px solid var(--lorcana-silver);
+      border-radius: 8px;
+      flex: 1;
+    }
+  }
+  .area{
+    position: relative;
+    .area-label{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-origin: center;
+      transform: translate(-50%, -50%) scale(200%) rotate(-45deg);
+      opacity: 0.2;
+      user-select: none;
+      color: var(--accent);
+      font-weight: bold;
+      padding: 4px 0;
+    }
+  }
+  .hand-area{
+    border: 1px solid var(--lorcana-bronze);
+    border-radius: 8px;
+    width: 100%;  
+    display: flex;
+    height: var(--card-size);
+    justify-content: center;
+    gap: 10px;
+  }
+}
